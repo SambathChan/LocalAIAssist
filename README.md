@@ -1,6 +1,6 @@
 # Local AI Assist
 
-A simple Window Forms application that I play around with Ollama locally using Phi3 Mini model
+A simple AI Chat Window Forms application that I play around with Ollama locally using Phi3 Mini model
 
 # How to run?
 
