@@ -5,7 +5,7 @@ A simple AI Chat Window Forms application that I play around with Ollama locally
 # How to run?
 
 1. Install Ollama on your machine
-2. Pull Phi-3 model
+2. Pull Phi-3 mini model
 3. Build and run
 
 # Tested on Windows only
