@@ -7,3 +7,5 @@ A simple Window Forms application that I play around with Ollama AI Chat locally
 1. Install Ollama on your machine
 2. Pull Phi-3 model
 3. Build and run
+
+https://github.com/SambathChan/LocalAIAssist
