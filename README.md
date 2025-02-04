@@ -8,4 +8,6 @@ A simple AI Chat Window Forms application that I play around with Ollama locally
 2. Pull Phi-3 model
 3. Build and run
 
+# Tested on Windows only
+
 https://github.com/SambathChan/LocalAIAssist
