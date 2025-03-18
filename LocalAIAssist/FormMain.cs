@@ -33,7 +33,7 @@ namespace LocalAIAssist
                 rtbResponse.AppendText("Your prompt: " + userPrompt + "\r\n");
                 rtbResponse.AppendText("Response: \r\n");
 
-                await foreach (var item in chatClient.CompleteStreamingAsync(chatHistory, cancellationToken: cts.Token))
+                await foreach (var item in chatClient.GetStreamingResponseAsync(chatHistory, cancellationToken: cts.Token))
                 {
                     rtbResponse.AppendText(item.Text);
                     response += item.Text;
