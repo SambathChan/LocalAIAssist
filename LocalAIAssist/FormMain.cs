@@ -1,21 +1,60 @@
+using LocalAIAssist.Helpers;
 using Microsoft.Extensions.AI;
 
 namespace LocalAIAssist
 {
     public partial class FormMain : Form
     {
-        IChatClient chatClient = new OllamaChatClient(new Uri("http://localhost:11434/"), "phi3:mini");
-        List<ChatMessage> chatHistory = new();
-        CancellationTokenSource cts = new CancellationTokenSource();
+        private string apiUrl = "http://localhost:11434/";
+        private OllamaChatClient chatClient;
+        List<ChatMessage> chatHistory = [];
+        CancellationTokenSource cts = new();
 
         public FormMain()
         {
             InitializeComponent();
+
+            btnSubmitPrompt.Enabled = false;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            try
+            {
+                var models = await OllamaHelper.GetAvailableModelsAsync();
 
+                if (models is null)
+                {
+                    slbMessage.Text = "No model found";
+                }
+                else
+                {
+                    BindDataToDropDown([.. models.Select(m => m.Name)]);
+                }
+            }
+            catch (Exception ex)
+            {
+                slbMessage.Text = ex.Message;
+            }
+        }
+
+        private void BindDataToDropDown(List<string> data)
+        {
+            cbSwitchModel.Items.Clear();
+
+            foreach (var item in data)
+            {
+                cbSwitchModel.Items.Add(item);
+            }
+
+            if(data.Count > 0)
+            {
+                cbSwitchModel.SelectedIndex = 0;
+            }
+            else
+            {
+                slbMessage.Text = "No model found";
+            }            
         }
 
         private async void btnSubmit_Click(object sender, EventArgs e)
@@ -50,7 +89,7 @@ namespace LocalAIAssist
 
         private void txtPrompt_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter && btnSubmitPrompt.Enabled)
             {
                 btnSubmitPrompt.PerformClick();
             }
@@ -69,6 +108,17 @@ namespace LocalAIAssist
             rtbResponse.Clear();
             chatHistory.Clear();
             slbMessage.Text = string.Empty;
+        }
+
+        private void cbSwitchModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSwitchModel.SelectedItem is string selectedModel)
+            {
+                chatClient?.Dispose();
+                chatClient = new OllamaChatClient(new Uri("http://localhost:11434/"), selectedModel);
+                slbMessage.Text = $"Using model: {selectedModel}";
+                btnSubmitPrompt.Enabled = true;
+            }
         }
     }
 }

@@ -35,6 +35,8 @@
             btnClear = new Button();
             statusStrip1 = new StatusStrip();
             slbMessage = new ToolStripStatusLabel();
+            label1 = new Label();
+            cbSwitchModel = new ComboBox();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -106,11 +108,31 @@
             slbMessage.Size = new Size(67, 20);
             slbMessage.Text = "Message";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 20);
+            label1.TabIndex = 10;
+            label1.Text = "Model:";
+            // 
+            // cbSwitchModel
+            // 
+            cbSwitchModel.FormattingEnabled = true;
+            cbSwitchModel.Location = new Point(73, 12);
+            cbSwitchModel.Name = "cbSwitchModel";
+            cbSwitchModel.Size = new Size(151, 28);
+            cbSwitchModel.TabIndex = 11;
+            cbSwitchModel.SelectedIndexChanged += cbSwitchModel_SelectedIndexChanged;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cbSwitchModel);
+            Controls.Add(label1);
             Controls.Add(statusStrip1);
             Controls.Add(btnClear);
             Controls.Add(btnStopPrompt);
@@ -135,5 +157,7 @@
         private Button btnClear;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel slbMessage;
+        private Label label1;
+        private ComboBox cbSwitchModel;
     }
 }
