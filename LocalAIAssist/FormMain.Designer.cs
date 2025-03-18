@@ -41,18 +41,19 @@
             // txtPrompt
             // 
             txtPrompt.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtPrompt.Location = new Point(12, 385);
+            txtPrompt.Location = new Point(12, 362);
+            txtPrompt.Multiline = true;
             txtPrompt.Name = "txtPrompt";
-            txtPrompt.Size = new Size(677, 27);
+            txtPrompt.Size = new Size(677, 50);
             txtPrompt.TabIndex = 0;
             txtPrompt.KeyDown += txtPrompt_KeyDown;
             // 
             // btnSubmitPrompt
             // 
             btnSubmitPrompt.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSubmitPrompt.Location = new Point(695, 385);
+            btnSubmitPrompt.Location = new Point(694, 362);
             btnSubmitPrompt.Name = "btnSubmitPrompt";
-            btnSubmitPrompt.Size = new Size(94, 29);
+            btnSubmitPrompt.Size = new Size(94, 50);
             btnSubmitPrompt.TabIndex = 1;
             btnSubmitPrompt.Text = "Submit";
             btnSubmitPrompt.UseVisualStyleBackColor = true;
@@ -64,7 +65,7 @@
             rtbResponse.Location = new Point(12, 46);
             rtbResponse.Name = "rtbResponse";
             rtbResponse.ReadOnly = true;
-            rtbResponse.Size = new Size(777, 333);
+            rtbResponse.Size = new Size(776, 310);
             rtbResponse.TabIndex = 2;
             rtbResponse.Text = "";
             // 
@@ -81,7 +82,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(12, 11);
+            btnClear.Location = new Point(595, 11);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(94, 29);
             btnClear.TabIndex = 8;
