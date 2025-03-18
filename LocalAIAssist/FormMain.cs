@@ -5,7 +5,7 @@ namespace LocalAIAssist
 {
     public partial class FormMain : Form
     {
-        private string apiUrl = "http://localhost:11434/";
+        private const string apiUrl = "http://localhost:11434/";
         private OllamaChatClient chatClient;
         List<ChatMessage> chatHistory = [];
         CancellationTokenSource cts = new();
@@ -115,7 +115,7 @@ namespace LocalAIAssist
             if (cbSwitchModel.SelectedItem is string selectedModel)
             {
                 chatClient?.Dispose();
-                chatClient = new OllamaChatClient(new Uri("http://localhost:11434/"), selectedModel);
+                chatClient = new OllamaChatClient(new Uri(apiUrl), selectedModel);
                 slbMessage.Text = $"Using model: {selectedModel}";
                 btnSubmitPrompt.Enabled = true;
             }
